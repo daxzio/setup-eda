@@ -32,7 +32,7 @@ jobs:
         with:
           path: ${{ needs.build_iverilog.outputs.cache_dir }}
           key: ${{ needs.build_iverilog.outputs.cache_key }}
-      - name: Cache Veriable
+      - name: Cache Verible
         uses: actions/cache@v3
         with:
           path: ${{ needs.build_verible.outputs.cache_dir }}
@@ -49,6 +49,6 @@ jobs:
       - name: Report Icarus
         run: |
           which iverilog
-      - name: Report Veriable
+      - name: Report Verible
         run: |
           which verible-verilog-lint

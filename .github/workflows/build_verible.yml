@@ -22,7 +22,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     needs: [build_dep]
     steps:
-      - name: Cache Veriable
+      - name: Cache Verible
         uses: actions/cache@v3
         with:
           path: ${{ needs.build_dep.outputs.cache_dir }}

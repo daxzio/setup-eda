@@ -1,0 +1,54 @@
+name: Check cached Setup
+
+on: 
+  push:
+  schedule:   
+    - cron: '0 1 * * *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  build_ghdl:
+    uses: ./.github/workflows/setup_ghdl.yml
+  build_iverilog:
+    uses: ./.github/workflows/setup_iverilog.yml
+  build_verible:
+    uses: ./.github/workflows/setup_verible.yml
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    needs: [build_ghdl, build_iverilog, build_verible]
+    steps:
+      - name: Cache GHDL
+        uses: actions/cache@v3
+        with:
+          path: ${{ needs.build_ghdl.outputs.cache_dir }}
+          key: ${{ needs.build_ghdl.outputs.cache_key }}
+      - name: Cache Icarus
+        uses: actions/cache@v3
+        with:
+          path: ${{ needs.build_iverilog.outputs.cache_dir }}
+          key: ${{ needs.build_iverilog.outputs.cache_key }}
+      - name: Cache Veriable
+        uses: actions/cache@v3
+        with:
+          path: ${{ needs.build_verible.outputs.cache_dir }}
+          key: ${{ needs.build_verible.outputs.cache_key }}
+      - name: Add to PATH
+        run: |
+          echo "${{ needs.build_ghdl.outputs.cache_dir }}/bin" >> $GITHUB_PATH
+          echo "${{ needs.build_iverilog.outputs.cache_dir }}/bin" >> $GITHUB_PATH
+          echo "${{ needs.build_verible.outputs.cache_dir }}/bin" >> $GITHUB_PATH
+      
+      - name: Report GHDL
+        run: |
+          which ghdl
+      - name: Report Icarus
+        run: |
+          which iverilog
+      - name: Report Veriable
+        run: |
+          which verible-verilog-lint

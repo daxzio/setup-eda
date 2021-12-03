@@ -11,6 +11,7 @@ on:
 jobs:
   build_dep:
     uses: ./.github/workflows/setup_verible.yml
+    #uses: daxzio/setup-eda/.github/workflows/setup_verible.yml@main
 #     with:
 #     githash: "dd5e91a4c632b47c8721784e23bf3acc6f46afbc"
 

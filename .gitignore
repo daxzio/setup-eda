@@ -1,0 +1,9 @@
+# General
+~*
+
+# Python
+*.py[cod]
+__pycache__/
+*egg-info/
+dist/
+.tox

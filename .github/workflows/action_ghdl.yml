@@ -15,10 +15,18 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
+#       - if: ${{ steps.git-cache.outputs.cache-hit != 'true' }}
+      - uses: msys2/setup-msys2@v2
+        with:
+        msystem: MINGW64
+        update: true     
+      
       - uses: ghdl/setup-ghdl-ci@nightly
         with:
           backend: llvm
       
       - name: Report GHDL
+        shell: bash
         run: |
-          which ghdl
+          ghdl --version
+          #which ghdl

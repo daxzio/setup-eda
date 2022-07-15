@@ -1,0 +1,24 @@
+name: Check GHDL actions
+
+on: 
+  push: 
+  schedule:
+    - cron: '0 0 * * *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: ghdl/setup-ghdl-ci@nightly
+        with:
+          backend: llvm
+      
+      - name: Report GHDL
+        run: |
+          which ghdl

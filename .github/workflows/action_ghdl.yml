@@ -26,7 +26,18 @@ jobs:
         with:
           backend: llvm
       
-      - name: Report GHDL
+#       - name: Report GHDL
+#         shell: bash
+#         run: |
+#           $GHDL --version
+#           #which ghdl
+      - if: ${{ matrix.os == 'ubuntu-latest' }}
+        name: Report GHDL linux
+        run: |
+          $GHDL --version
+          which ghdl
+      - if: ${{ matrix.os == 'windows-latest' }}
+        name: Report GHDL windows
         shell: bash
         run: |
           $GHDL --version

@@ -33,5 +33,6 @@ jobs:
       
       - name: Report GHDL
         run: |
+          sudo apt install gnat
           which ghdl
           ghdl version

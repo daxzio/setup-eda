@@ -55,6 +55,6 @@ jobs:
           bazel run -c opt :install -- ${{ env.CACHE_DIR }}/bin
           cd ..
       - id: step0
-        run: echo "::set-output name=cache_dir::${{ env.CACHE_DIR }}"
+        run: echo "cache_dir=${{ env.CACHE_DIR }}" >> $GITHUB_OUTPUT
       - id: step1
-        run: echo "::set-output name=cache_key::${{ env.CACHE_KEY }}"
+        run: echo "cache_key=${{ env.CACHE_KEY }}" >> $GITHUB_OUTPUT

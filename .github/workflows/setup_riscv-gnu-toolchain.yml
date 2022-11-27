@@ -17,7 +17,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     outputs:
       output0 : ${{ steps.step0.outputs.cache_dir }}
       output1 : ${{ steps.step1.outputs.cache_key }}
@@ -55,7 +55,7 @@ jobs:
           cd build
           ../configure --prefix=${{ env.CACHE_DIR }}
           make -j$(nproc)
-          sudo make install
+          #sudo make install
           cd ..
       - id: step0
         run: echo "cache_dir=${{ env.CACHE_DIR }}" >> $GITHUB_OUTPUT

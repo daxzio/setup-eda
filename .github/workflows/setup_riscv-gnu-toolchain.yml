@@ -54,7 +54,7 @@ jobs:
           mkdir build
           cd build
           ../configure --prefix=${{ env.CACHE_DIR }}
-          make -j$(nproc)
+          make -j$(nproc) linux
           #sudo make install
           cd ..
       - id: step0

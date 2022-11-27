@@ -56,8 +56,7 @@ jobs:
           sudo apt install -y zlibc zlib1g zlib1g-dev  # Ubuntu only (ignore if gives error)
           autoconf
           ./configure --prefix=${{ env.CACHE_DIR }}
-          make
-          #make -j `nproc`  # Build Verilator itself (if error, try just 'make')
+          make -j$(nproc)
           sudo make install
           cd ..
       - id: step0

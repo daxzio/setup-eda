@@ -51,7 +51,7 @@ jobs:
           git checkout ${{ env.GITHEAD }}
           sudo apt install gnat
           ./configure --prefix=${{ env.CACHE_DIR }}
-          make
+          make -j$(nproc)
           sudo make install
           cd ..
       - id: step0

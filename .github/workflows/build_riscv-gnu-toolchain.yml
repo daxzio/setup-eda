@@ -12,9 +12,8 @@ jobs:
   build_dep:
     uses: ./.github/workflows/setup_riscv-gnu-toolchain.yml
     #uses: daxzio/setup-eda/.github/workflows/setup_riscv-gnu-toolchain.yml@main
-    with:
-      githash: "f2a2c87"
-#       githash: "c7cb13d302e13cac77701045fd7935a9b81b9e89"
+    #with:
+    #  githash: "f2a2c87"
 
   build:
     strategy:

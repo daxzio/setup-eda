@@ -37,4 +37,5 @@ jobs:
       
       - name: Report RiscV
         run: |
+          ls ${{ needs.build_dep.outputs.cache_dir }}/bin
           which riscv64-linux-elf-gcc

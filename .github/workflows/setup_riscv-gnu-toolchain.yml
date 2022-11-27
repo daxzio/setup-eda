@@ -54,8 +54,7 @@ jobs:
           mkdir build
           cd build
           ../configure --prefix=${{ env.CACHE_DIR }}
-          make -j$(nproc) linux
-          #sudo make install
+          make -j$(nproc)
           cd ..
       - id: step0
         run: echo "cache_dir=${{ env.CACHE_DIR }}" >> $GITHUB_OUTPUT

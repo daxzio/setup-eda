@@ -53,7 +53,7 @@ jobs:
               libgmp-dev gawk build-essential bison flex texinfo gperf
           mkdir build
           cd build
-          ./configure --prefix=${{ env.CACHE_DIR }}
+          ../configure --prefix=${{ env.CACHE_DIR }}
           make
           sudo make install
           cd ..

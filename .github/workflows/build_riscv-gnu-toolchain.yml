@@ -37,4 +37,4 @@ jobs:
       
       - name: Report RiscV
         run: |
-          which riscv64-unknown-elf-gcc
+          which riscv64-linux-elf-gcc

@@ -17,7 +17,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     outputs:
       output0 : ${{ steps.step0.outputs.cache_dir }}
       output1 : ${{ steps.step1.outputs.cache_key }}

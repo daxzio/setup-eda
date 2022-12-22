@@ -17,10 +17,7 @@ jobs:
 
 
   build:
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-18.04
     needs: [build_dep]
     steps:
       - name: Cache RiscV Tools

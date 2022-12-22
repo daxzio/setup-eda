@@ -34,7 +34,7 @@ jobs:
             echo "GITHEAD=${GITHEAD}" >> $GITHUB_ENV
           fi
           echo "GITPATH=${GITPATH}" >> $GITHUB_ENV
-          echo "CACHE_DIR=${{ github.workspace }}/.cache/riscv-gnu-toolchain" >> $GITHUB_ENV
+          echo "CACHE_DIR=${{ github.workspace }}/.cache/riscv-gnu-toolchain-old" >> $GITHUB_ENV
           echo "CACHE_KEY=riscv-gnu-toolchain-${GITHEAD}" >> $GITHUB_ENV
       - name: Cache Environment
         id: git-cache
@@ -45,7 +45,7 @@ jobs:
       - name: Set up GCC
         uses: egor-tensin/setup-gcc@v1
         with:
-        version: 5        
+          version: 5
       - if: ${{ steps.git-cache.outputs.cache-hit != 'true' }}
         name: Compile RiscV Toolchain
         run: |
